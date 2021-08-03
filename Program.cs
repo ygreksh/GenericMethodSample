@@ -36,10 +36,7 @@ namespace GenericMethodSample
         //в списке List<Person> (List<Client>, List<Employee>)
         public static Person FindPersonByPassportnmber<T>(string PassportNumber, List<T> listOfPersons) where T: Person    //обобщенный метод. работает только с экземплярами и наследниками Person
         {
-            Person person = new Person();
-            Person newPerson = new Person() {PassportNumber = PassportNumber};
-            Person foundPerson = listOfPersons.Find(x => x.Equals(newPerson) );
-            return foundPerson;
+            return listOfPersons.Find(x => x.Equals(new Person() {PassportNumber = PassportNumber}));
         }
     }
 }
