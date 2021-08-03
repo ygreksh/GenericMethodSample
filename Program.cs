@@ -34,9 +34,10 @@ namespace GenericMethodSample
 
         //Обобщенынй метод, который ищет Person и его наследников (Client, Employee)
         //в списке List<Person> (List<Client>, List<Employee>)
-        public static Person FindPersonByPassportnmber<Person>(string PassportNumber, List<Person> listOfPersons)    //обобщенный метод. работает только с экзеплярами и наследниками Person
+        public static Person FindPersonByPassportnmber<T>(string PassportNumber, List<T> listOfPersons) where T: Person    //обобщенный метод. работает только с экземплярами и наследниками Person
         {
-            GenericMethodSample.Person newPerson = new GenericMethodSample.Person() {PassportNumber = PassportNumber};
+            Person person = new Person();
+            Person newPerson = new Person() {PassportNumber = PassportNumber};
             Person foundPerson = listOfPersons.Find(x => x.Equals(newPerson) );
             return foundPerson;
         }
